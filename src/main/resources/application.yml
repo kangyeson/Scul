@@ -1,0 +1,34 @@
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/software}
+    username: ${DB_USERNAME:root}
+    password: ${DB_PASSWORD:070211}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        defer-datasource-initialization: true
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+
+jwt:
+  header: ${HEADER:Authorization}
+  prefix : ${PREFIX:Bearer}
+  secret-key: ${JWT_SECRET_KEY:dfhasjkjkdfaskverafter}
+  access-exp: 60000000
+  refresh-exp: ${JWT_REFRESH_EXP:604800000}
+
+logging:
+  level:
+    com.example : DEBUG
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace
