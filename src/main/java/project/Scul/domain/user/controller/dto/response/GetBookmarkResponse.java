@@ -8,7 +8,7 @@ import project.Scul.domain.culture.domain.Culture;
 @NoArgsConstructor
 public class GetBookmarkResponse {
     private String place;
-    private String location;
+    private String address;
     private Boolean isReservable;
     private Integer usageFee;
     private String tag;
@@ -22,7 +22,7 @@ public class GetBookmarkResponse {
 
     public GetBookmarkResponse(Culture culture) {
         place = culture.getPlace();
-        location = culture.getLocation();
+        address = culture.getAddress();
         isReservable = culture.isReservable(); // 연관된 장소명
         usageFee = culture.getUsageFee();
         tag = culture.getTag();

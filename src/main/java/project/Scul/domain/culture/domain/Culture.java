@@ -43,14 +43,11 @@ public class Culture {
     private String address;  //주소
 
     @Column(columnDefinition = "VARCHAR(60)")
-    private String map_url;  //위치보기
-
-    @Column(columnDefinition = "VARCHAR(60)")
     private String cultureContent;
 
     @Builder
     public Culture(Long cultureId, String place, String phoneNumber, String usageTime, String registrationSchedule, String operationSchedule,
-                   boolean isReservable, Integer usageFee, String tag, String imageUrl, String address, String map_url, String cultureContent) {
+                   boolean isReservable, Integer usageFee, String tag, String imageUrl, String address, String cultureContent) {
         this.cultureId = cultureId;
         this.place = place;
         this.phoneNumber = phoneNumber;
@@ -62,7 +59,6 @@ public class Culture {
         this.tag = tag;
         this.imageUrl = imageUrl;
         this.address = address;
-        this.map_url = map_url;
         this.cultureContent = cultureContent;
     }
 }
