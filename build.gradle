@@ -22,10 +22,8 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
-	//jwt
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
@@ -34,7 +32,14 @@ dependencies {
 
 	implementation 'com.amazonaws:aws-java-sdk-s3:1.12.530'
 
-	implementation("io.jsonwebtoken:jjwt:0.9.1")
+	// jwt
+	// implementation("io.jsonwebtoken:jjwt:0.9.1") -> 0.9.1버전만 올인원 패키지 제공
+	// JwtProvider에서 Keys 클래스 사용하기 위해 버전업
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 	annotationProcessor 'org.projectlombok:lombok'
 
