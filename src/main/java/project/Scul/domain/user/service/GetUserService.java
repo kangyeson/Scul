@@ -47,7 +47,7 @@ public class GetUserService {
                 .map(bookmark -> new GetBookmarkResponse(bookmark.getCultureId())).collect(Collectors.toList());
     }
 
-    private User getUserOrThrow(Long userId)
+    public User getUserOrThrow(Long userId)
     {
         return userRepository.findUserByUserId(userId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "유저를 찾을 수 없습니다."));
     }

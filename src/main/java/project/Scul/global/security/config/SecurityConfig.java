@@ -46,12 +46,9 @@ public class SecurityConfig {
         String[] permitAllWhiteURLList = {
                 "/login",
                 "/register",
-                "/token-refresh", // JWT 토큰 만료 시 Access Token 재발급 요청 경로
-                "/favicon.ico",  // 브라우저가 자동 요청하는 사이트 아이콘 경로 (모든 웹 프로젝트에서 넣어주는 것이 관계...?)
-                "/error"
+                "/token-refresh" // JWT 토큰 만료 시 Access Token 재발급 요청 경로
         };
 
-        /**
         // 요청별 인가 설정
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(permitAllWhiteURLList).permitAll() // 화이트리스트 요청 모두 허용
@@ -76,7 +73,7 @@ public class SecurityConfig {
                         .authenticationEntryPoint(customAuthenticationEntryPointHandler)
                         .accessDeniedHandler(customAccessDeniedHandler)
                 );
-        */
+
         // 최종적으로 SecurityFilterChain 반환
         return http.build();
     }
