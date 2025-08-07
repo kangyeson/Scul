@@ -39,7 +39,7 @@ public class CustomAuthenticationEntryPointHandler implements AuthenticationEntr
         returnJson.addProperty("errorCode", HttpStatus.UNAUTHORIZED.name()); // "UNAUTHORIZED"
         returnJson.addProperty("errorMsg", "인증되지 않은 사용자입니다.");    // 직접 메시지 설정
 
-        PrintWriter out = response.getWriter();
-        out.print(returnJson);  // // {"errorCode": "UNAUTHORIZED", "errorMsg": "인증되지 않은 사용자입니다."}
+        PrintWriter out = response.getWriter(); // HTTP 응답 본문(Body)에 데이터를 쓰기 위해 사용하는 출력 스트림을 가져옴
+        out.print(returnJson);  // {"errorCode": "UNAUTHORIZED", "errorMsg": "인증되지 않은 사용자입니다."}
     }
 }

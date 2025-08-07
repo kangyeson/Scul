@@ -1,4 +1,4 @@
-package project.Scul.domain.user.controller.dto.response;
+package project.Scul.domain.bookmark.controller.dto.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,7 +6,7 @@ import project.Scul.domain.culture.domain.Culture;
 
 @Getter
 @NoArgsConstructor
-public class GetBookmarkResponse {
+public class GetUserBookmarkResponse {
     private String place;
     private String address;
     private Boolean isReservable;
@@ -20,7 +20,7 @@ public class GetBookmarkResponse {
 //            "tag" : "장애인, 유아",
 //            "imageUrl" : "https://~~"
 
-    public GetBookmarkResponse(Culture culture) {
+    public GetUserBookmarkResponse(Culture culture) {
         place = culture.getPlace();
         address = culture.getAddress();
         isReservable = culture.isReservable(); // 연관된 장소명
