@@ -17,6 +17,11 @@ spring:
         defer-datasource-initialization: true
     database-platform: org.hibernate.dialect.MySQL8Dialect
 
+  data:
+    redis:
+      host: redis.xquare.app  # Redis 서버 위치
+      port: 6379
+
 jwt:
   header: ${HEADER:Authorization} # HTTP 요청에서 토큰이 포함된 헤더 이름 (기본 - "Authorization")
   prefix : ${PREFIX:Bearer}       # JWT 앞에 붙는 접두어 (기본 - "Bearer")
