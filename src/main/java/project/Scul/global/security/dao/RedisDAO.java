@@ -22,19 +22,19 @@ public class RedisDAO {
 
     // 기본 데이터 저장
     // Redis에 기본적으로 만료 시간 없이 데이터 저장
-    public void setValue(String key, String data) {
+    public void setValues(String key, String data) {
         values.set(key, data);
     }
 
     // 만료 시간이 있는 데이터 저장 (Duration : 만료시간 설정)
     // 주로 RefreshToken 저장할 때 사용함
-    public void setValue(String key, String data, Duration duration) {
+    public void setValues(String key, String data, Duration duration) {
         values.set(key, data, duration);
     }
 
     // 데이터 조회
     // RefreshToken 검증 시 사용됨
-    public Object getValue(String key) {
+    public Object getValues(String key) {
         return values.get(key);
     }
 

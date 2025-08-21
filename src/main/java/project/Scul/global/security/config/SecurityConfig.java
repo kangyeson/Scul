@@ -12,6 +12,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.OncePerRequestFilter;
 import project.Scul.global.security.filter.JwtAuthFilter;
 import project.Scul.global.security.handler.CustomAccessDeniedHandler;
 import project.Scul.global.security.handler.CustomAuthenticationEntryPointHandler;
@@ -27,7 +28,7 @@ import project.Scul.global.security.handler.CustomAuthenticationEntryPointHandle
 @EnableWebSecurity  // Spring Security 활성화
 @RequiredArgsConstructor
 public class SecurityConfig {
-    private final JwtAuthFilter jwtAuthFilter; // JWT 인증 필터 (요청마다 토큰을 검증하는 필터)
+    private final OncePerRequestFilter jwtAuthFilter; // JWT 인증 필터 (요청마다 토큰을 검증하는 필터)
 
     // 인증 실패 시 처리할 커스텀 핸들러 (로그인 안 된 사용자)
     private final CustomAuthenticationEntryPointHandler customAuthenticationEntryPointHandler;
@@ -45,16 +46,16 @@ public class SecurityConfig {
         // 인증(로그인) 없이 허용할 요청 경로들, 토큰 없이도 접속 가능
         String[] permitAllWhiteURLList = {
                 "/login",
-                "/register",
+                "/signup",
                 "/token-refresh" // JWT 토큰 만료 시 Access Token 재발급 요청 경로
         };
 
         // 요청별 인가 설정
         http.authorizeHttpRequests(auth -> auth
                 .requestMatchers(permitAllWhiteURLList).permitAll() // 화이트리스트 요청 모두 허용
-                .requestMatchers(HttpMethod.DELETE, "/user").hasRole("ADMIN") // DELETE /user 요청은 관리자만 허용
                 .anyRequest().authenticated() // 그 외의 모든 요청은 인증 필요
         )
+                .httpBasic(AbstractHttpConfigurer::disable) // httpBasic 비활성화
                 .formLogin(AbstractHttpConfigurer::disable) //기본 로그인 폼 비활성화 (REST API로 로그인 처리할 것이기 떄문)
                 .logout(AbstractHttpConfigurer::disable) // 기본 로그아웃 기능 비활성화 (클라이언트에서 처리하거나 별도 API 구성)
                 .csrf(AbstractHttpConfigurer::disable) // CSRF-Cross Site Request Forgery = 교차 사이트 요청 위조
