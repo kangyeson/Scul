@@ -42,7 +42,7 @@ public class SecurityConfig {
     }
 
     @Bean // HTTP 요청 경로를 객체로 매칭해주는 Matcher 빌더 등록 (패턴 기반 보안 설정용)
-    public SecurityFilterChain springSecurityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilter(HttpSecurity http) throws Exception {
         // 인증(로그인) 없이 허용할 요청 경로들, 토큰 없이도 접속 가능
         String[] permitAllWhiteURLList = {
                 "/login",

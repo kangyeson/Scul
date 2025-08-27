@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: ${DB_URL:jdbc:mysql://localhost:3306/software}
-    username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:070211}
+    url: ${DB_URL:jdbc:mysql://localhost:3306/scul_db}
+    username: ${DB_USERNAME:kangyeson}
+    password: ${DB_PASSWORD:030722}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
