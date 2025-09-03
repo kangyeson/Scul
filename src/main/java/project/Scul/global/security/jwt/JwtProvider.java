@@ -5,9 +5,6 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Component;
 import project.Scul.global.security.config.JwtProperties;
 import project.Scul.global.security.dao.RedisDAO;
@@ -16,17 +13,13 @@ import javax.crypto.SecretKey;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Date;
-import java.util.Map;
-import java.util.HashMap;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor // final 키워드가 붙은 필드 생성자 자동 생성
 @Slf4j // lombok의 로그 객체(log)를 자동으로 생성해주는 어노테이션
 public class JwtProvider {
     private final JwtProperties jwtProperties;
-    private final UserDetailsService userDetailsService;
     private final RedisDAO redisDAO; // RefreshToken 저장을 위해 Redis 사용
 
     private SecretKey key; // JWT 서명을 위한 SecretKey 객체 = 서명키(Signature)
