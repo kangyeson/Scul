@@ -21,7 +21,7 @@ public class GetUserReviewService {
     public List<GetUserReviewResponse> getUserReviews(Long userId)
     {
         String userName = getUserService.validateAndGetUsername(userId);
-        List<Review> reviews = reviewRepository.findAllByUserId(userId);
+        List<Review> reviews = reviewRepository.findAllByReviewer_UserId(userId);
         return reviews.stream()
                 .map(review -> new GetUserReviewResponse(userName, review)).collect(Collectors.toList());
     }

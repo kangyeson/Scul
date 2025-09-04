@@ -19,7 +19,7 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User reviewer;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "culture_id")
@@ -36,7 +36,7 @@ public class Review {
     @Builder
     public Review(Long reviewId, User userId, Culture cultureId, String imageUrl, String reviewContent, LocalDate reviewedDate) {
         this.reviewId = reviewId;
-        this.userId = userId;
+        this.reviewer = userId;
         this.cultureId = cultureId;
         this.imageUrl = imageUrl;
         this.reviewContent = reviewContent;

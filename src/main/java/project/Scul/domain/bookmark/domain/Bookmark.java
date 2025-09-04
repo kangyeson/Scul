@@ -19,16 +19,16 @@ public class Bookmark {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User userId;
+    private User user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "culture_id")
-    private Culture cultureId;
+    private Culture culture;
 
     @Builder
-    public Bookmark(Long bookmarkId, User userId, Culture cultureId) {
+    public Bookmark(Long bookmarkId, User user, Culture culture) {
         this.bookmarkId = bookmarkId;
-        this.userId = userId;
-        this.cultureId = cultureId;
+        this.user = user;
+        this.culture = culture;
     }
 }

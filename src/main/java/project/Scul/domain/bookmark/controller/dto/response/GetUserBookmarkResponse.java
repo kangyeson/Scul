@@ -20,12 +20,12 @@ public class GetUserBookmarkResponse {
 //            "tag" : "장애인, 유아",
 //            "imageUrl" : "https://~~"
 
-    public GetUserBookmarkResponse(Culture culture) {
-        place = culture.getPlace();
-        address = culture.getAddress();
-        isReservable = culture.isReservable(); // 연관된 장소명
-        usageFee = culture.getUsageFee();
-        tag = culture.getTag();
-        imageUrl = culture.getImageUrl();
+    public GetUserBookmarkResponse(String place, String address, Boolean isReservable, Integer usageFee, String tag, String imageUrl) {
+        this.place = place;
+        this.address = address;
+        this.isReservable = isReservable;
+        this.usageFee = usageFee;
+        this.tag = tag;
+        this.imageUrl = imageUrl;
     }
 }

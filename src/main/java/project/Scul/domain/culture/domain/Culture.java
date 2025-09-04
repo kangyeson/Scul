@@ -28,7 +28,6 @@ public class Culture {
     @Column(columnDefinition = "VARCHAR(60)")
     private String operationSchedule; //운영일정
 
-    @Column(columnDefinition = "TRUE")
     private boolean isReservable;   //예약가능여부
 
     private Integer usageFee;  //요금 (0일 경우 무료로 표시)
